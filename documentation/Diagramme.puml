@@ -1,0 +1,42 @@
+@startuml
+
+class Tag {
+    toHTML() : String
+}
+
+class Paragraph {
+    text : String
+    Paragraph()
+    Paragraph(String text)
+    Paragraph(Paragraph p)
+    getHTML(): String
+    getText() : String
+    toString() : String
+    toHTML(): String
+}
+
+class Title {
+    text : String
+    lvl : int
+    Title(String text, int lvl)
+    getHTML(): String
+    getLvl(): int
+    getText() : String
+    toHTML(): String
+}
+
+
+class Img {
+    alt : String
+    src : String
+    Img(String src, String alt)
+    getHTML(): String
+    toHTML(): String
+}
+
+
+Tag <|-- Paragraph
+Tag <|-- Title
+Tag <|-- Img
+Page -> "*" Tag
+@enduml
