@@ -1,0 +1,68 @@
+@startuml
+
+autonumber
+
+actor Main as m
+participant "div2:Div2Col" as div
+participant "left:List<Tag>" as left
+participant "right:List<Tag>" as right
+participant "t:Title" as t
+participant "para:Paragraph" as para
+participant "t1:Title" as t1
+participant "t2:Title" as t2
+participant "para2:Paragraph" as para2
+
+group setup
+
+    m --> div : new Div2Col()
+    div --> left : new ArrayList()
+    div --> right : new ArrayList()
+    m --> t : new Title()
+    m --> para : new Paragraph()
+    m --> t1 : new Title()
+    m --> t2 : new Title()
+    m --> para2 : new Paragraph()
+
+    m -> div : addLeft(t)
+    div -> left : add(t)
+    m -> div : addLeft(para)
+    div -> left : add(para)
+    m -> div : addLeft(t1)
+    div -> left : add(t1)
+
+    m -> div : addLeft(t2)
+    div -> left : add(t2)
+    m -> div : addLeft(para2)
+    div -> left : add(para2)
+end
+
+group toHTML()
+    m -> div : toHTML()
+    div -> div : res = initDivLeft()
+    div -> t : toHtML()
+    t --> div : <h1>...</h1>
+    div -> div : appendHTML
+    div -> para : toHtML()
+    para --> div : <p>...</p>
+    div -> div : appendHTML
+    div -> t1 : toHtML()
+    t1 --> div : <p>...</p>
+    div -> div : appendHTML
+    div -> div : res = closeDivLeft()
+    div -> div : res = initDivRight()
+    div -> t2 : toHtML()
+    t2 --> div : <p>...</p>
+    div -> div : appendHTML
+    div -> para2 : toHtML()
+    para2 --> div : <p>...</p>
+    div -> div : appendHTML
+    div -> div : res = closeDivRight()
+    div --> m : HTML
+end
+
+
+
+
+
+
+@enduml

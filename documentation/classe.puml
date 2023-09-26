@@ -39,4 +39,15 @@ Tag <|-- Paragraph
 Tag <|-- Title
 Tag <|-- Img
 Page -> "*" Tag
+
+class Div2Col{
+    addToLeft(Tag t)
+    addToRight(Tag t)
+    toHTML(): String
+}
+
+Tag <|-- Div2Col
+Div2Col --> "*" Tag : left
+Div2Col --> "*" Tag : right
+
 @enduml
