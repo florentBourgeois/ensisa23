@@ -1,3 +1,5 @@
+package main;
+
 import tags.Paragraph;
 import tags.Tag;
 import tags.Title;

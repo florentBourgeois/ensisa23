@@ -1,5 +1,7 @@
 package tags;
 
+import main.Utilities;
+
 import javax.management.BadAttributeValueExpException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,8 @@ public class Div2Col extends Tag{
         d2.addToRight(new Title("Titre à droite", 1));
 
         d.addToRight(d2);
-
         System.out.println(d.toHTML());
+
+        Utilities.writeHTMLToIndex(d.toHTML());
     }
 }
